@@ -1,4 +1,3 @@
-// src/gramjs/network/ConnectionWebSocket.ts
 import { generateRandomBytes } from "../../Helpers";
 import { ObfuscatedConnection } from "./Connection";
 import { AbridgedPacketCodec } from "./TCPAbridged";

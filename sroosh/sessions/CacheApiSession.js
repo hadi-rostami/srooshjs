@@ -2,8 +2,8 @@ const MemorySession = require("./Memory");
 const AuthKey = require("../crypto/AuthKey");
 const utils = require("../Utils");
 
-const CACHE_NAME = "GramJs";
-const STORAGE_KEY_BASE = "GramJs-session-";
+const CACHE_NAME = "Sroosh";
+const STORAGE_KEY_BASE = "Sroosh-session-";
 
 class CacheApi extends MemorySession {
     constructor(sessionId) {

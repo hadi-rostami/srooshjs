@@ -62,7 +62,7 @@ class CastError extends Error {
 const CACHING_SUPPORTED =
     typeof self !== "undefined" && self.localStorage !== undefined;
 
-const CACHE_KEY = "GramJs:apiCache";
+const CACHE_KEY = "Sroosh:apiCache";
 
 function buildApiFromTlSchema() {
     let definitions;

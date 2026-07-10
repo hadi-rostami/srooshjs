@@ -62,12 +62,12 @@ function copyFolderSync(from, to) {
 
 fs.rmSync("browser", { recursive: true, force: true });
 fs.rmSync("tempBrowser", { recursive: true, force: true });
-copyFolderSync("gramjs", "tempBrowser");
+copyFolderSync("sroosh", "tempBrowser");
 addBuffer("tempBrowser");
 // easier that writing two files smh
 const tsconfig = fs.readFileSync("tsconfig.json", "utf8");
 let newTsconfig = tsconfig.replace(/\.\/dist/g, "./browser");
-newTsconfig = newTsconfig.replace(/gramjs/g, "tempBrowser");
+newTsconfig = newTsconfig.replace(/sroosh/g, "tempBrowser");
 fs.writeFileSync("tsconfig.json", newTsconfig, "utf8");
 const packageJSON = JSON.parse(fs.readFileSync("package.json", "utf8"));
 const oldValueStorage = packageJSON.dependencies["node-localstorage"];
@@ -84,7 +84,7 @@ fs.writeFileSync(
   "utf8"
 );
 fs.writeFileSync(
-  "gramjs/Version.ts",
+  "sroosh/Version.ts",
   `export const version = "${packageJSON.version}";`,
   "utf8"
 );
@@ -113,8 +113,8 @@ npmi.on("close", (code) => {
     fs.copyFileSync("package.json", "browser/package.json");
     fs.copyFileSync("README.md", "browser/README.md");
     fs.copyFileSync("LICENSE", "browser/LICENSE");
-    fs.copyFileSync("gramjs/tl/api.d.ts", "browser/tl/api.d.ts");
-    fs.copyFileSync("gramjs/define.d.ts", "browser/define.d.ts");
+    fs.copyFileSync("sroosh/tl/api.d.ts", "browser/tl/api.d.ts");
+    fs.copyFileSync("sroosh/define.d.ts", "browser/define.d.ts");
 
     const npm_publish = exec("npm publish --tag browser", { cwd: "browser" });
     npm_publish.stdout.on("data", function (data) {
@@ -135,7 +135,7 @@ npmi.on("close", (code) => {
         // easier that writing two files smh
         const tsconfig = fs.readFileSync("tsconfig.json", "utf8");
         let newTsconfig = tsconfig.replace(/\.\/browser/g, "./dist");
-        newTsconfig = newTsconfig.replace(/tempBrowser/g, "gramjs");
+        newTsconfig = newTsconfig.replace(/tempBrowser/g, "sroosh");
         fs.writeFileSync("tsconfig.json", newTsconfig, "utf8");
         const packageJSON = JSON.parse(fs.readFileSync("package.json", "utf8"));
         packageJSON.dependencies["node-localstorage"] = oldValueStorage;
@@ -162,8 +162,8 @@ npmi.on("close", (code) => {
               fs.copyFileSync("package.json", "dist/package.json");
               fs.copyFileSync("README.md", "dist/README.md");
               fs.copyFileSync("LICENSE", "dist/LICENSE");
-              fs.copyFileSync("gramjs/tl/api.d.ts", "dist/tl/api.d.ts");
-              fs.copyFileSync("gramjs/define.d.ts", "dist/define.d.ts");
+              fs.copyFileSync("sroosh/tl/api.d.ts", "dist/tl/api.d.ts");
+              fs.copyFileSync("sroosh/define.d.ts", "dist/define.d.ts");
               renameFiles("dist", "delete");
               const npm_publish = exec("npm publish --tag latest", {
                 cwd: "dist",

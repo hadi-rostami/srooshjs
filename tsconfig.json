@@ -16,6 +16,6 @@
     "skipLibCheck": true,
     "outDir": "./dist"
   },
-  "exclude": ["gramjs/tl/types-generator", "node_modules"],
-  "include": ["gramjs"]
+  "exclude": ["sroosh/tl/types-generator", "node_modules"],
+  "include": ["sroosh"]
 }
